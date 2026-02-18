@@ -42,8 +42,19 @@ public class Playlist {
         }
     }
     public String sortByReleaseYearNewToOld(){
-        ArrayList<Song> sortedList = new ArrayList<>();
-        return"in Progress";
+        ArrayList<Song> sortedList = songList;
+        for(int i = 0; i<sortedList.size()-1;i++){
+            int newestYear = i;
+            for(int j = i+1;j<sortedList.size();j++){
+                if(sortedList.get(j).getYear()>sortedList.get(newestYear).getYear()){
+                    newestYear=j;
+                }
+            }
+            //swap
+            Song temp = sortedList.get(newestYear);
+            sortedList.
+        }
+        return sortedList.toString();
     }
     public String sortByReleaseYearOldToNew(){
         ArrayList<Song> sortedList = new ArrayList<>();
