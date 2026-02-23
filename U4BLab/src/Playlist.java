@@ -104,17 +104,14 @@ public class Playlist {
             sortedList.add(song);
         }
         //sorts from the newest song to the oldest song
-        for(int i = 0; i<sortedList.size()-1;i++){
-            int newestYear = i;
-            for(int j = i+1;j<sortedList.size();j++){
-                if(sortedList.get(j).getYear()>sortedList.get(newestYear).getYear()){
-                    newestYear=j;
-                }
+        for(int i = 1; i<sortedList.size()-1;i++){
+            Song tempSong = sortedList.get(i);
+            int position = i;
+            while(position>0&& sortedList.get(position-1).getYear()<tempSong.getYear()){
+                sortedList.set(position,sortedList.get(position-1));
+                position--;
             }
-            //swap
-            Song temp = sortedList.get(i);
-            sortedList.set(i,sortedList.get(newestYear));
-            sortedList.set(newestYear,temp);
+            sortedList.set(position,tempSong);
         }
         //provides the format for the ArrayList to be printed in
         String format = "%-30s %-21s %-27s %-5s %11s";
@@ -131,17 +128,14 @@ public class Playlist {
             sortedList.add(song);
         }
         //sorts from the oldest song to the newest song
-        for(int i = 0; i<sortedList.size()-1;i++){
-            int oldestYear = i;
-            for(int j = i+1;j<sortedList.size();j++){
-                if(sortedList.get(j).getYear()<sortedList.get(oldestYear).getYear()){
-                    oldestYear=j;
-                }
+        for(int i = 1; i<sortedList.size()-1;i++){
+            Song tempSong = sortedList.get(i);
+            int position = i;
+            while(position>0&& sortedList.get(position-1).getYear()>tempSong.getYear()){
+                sortedList.set(position,sortedList.get(position-1));
+                position--;
             }
-            //swap
-            Song temp = sortedList.get(i);
-            sortedList.set(i,sortedList.get(oldestYear));
-            sortedList.set(oldestYear,temp);
+            sortedList.set(position,tempSong);
         }
         //provides the format for the ArrayList to be printed in
         String format = "%-30s %-21s %-27s %-5s %11s";
